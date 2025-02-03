@@ -5,11 +5,11 @@ import java.util.List;
 
 import entidades.Pessoas;
 
-public class CadastroPessoa {
+public class CadastroPaciente extends Cadastro {
 	int numPessoas; 
 	private List<Pessoas> pessoa;
 	
-	public CadastroPessoa() {
+	public CadastroPaciente() {
 		numPessoas = 0;
 		pessoa = new ArrayList<Pessoas>();
 	}

@@ -1,16 +1,21 @@
 package entidades;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Pessoas {
 	protected String nome;
 	protected String cpf;
 	protected LocalDate dataNascimento;
-	
+	protected List<Consulta> consultas;
+
 	public Pessoas (String nome, String cpf, LocalDate dataNascimento) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
+		this.consultas = new ArrayList<>();
 	}
 	
 	public String getNome() {
@@ -30,6 +35,14 @@ public class Pessoas {
 	}
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
+	}	
+    public List<Consulta> getConsultas() { 
+    	return consultas; 
+    }
+    
+    public void adicionarConsulta(Consulta consulta) {
+        this.consultas.add(consulta);
+    }
+
 	
 }

@@ -1,16 +1,20 @@
 package servicos;
 
-import entidades;
-import excecoes;
+import entidades.Exames;
+import entidades.Medico;
+import entidades.Pessoas;
+import excecoes.HorarioIndisponivelException;
+import excecoes.EspecialidadeInvalidaException;
+import excecoes.PagamentoPendenteException;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Agendamento {
-    public static void agendarConsulta(Medico medico, Pessoa pessoa, LocalDateTime dataHora, double valor) 
+    public static void agendarConsulta(Medico medico, Pessoas pessoa, LocalDateTime dataHora, double valor) 
             throws HorarioIndisponivelException, PagamentoPendenteException, EspecialidadeInvalidaException {
 
-        if (paciente.temPagamentoPendente()) {
+        if (pessoa.temPagamentoPendente()) {
             throw new PagamentoPendenteException("O paciente possui pagamento(s) pendente(s)!");
         }
         

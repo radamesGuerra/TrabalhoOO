@@ -2,7 +2,9 @@ package servicos;
 
 import entidades.Medico;
 import entidades.Pessoas;
+
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Principal {
@@ -20,11 +22,13 @@ public class Principal {
             System.out.println("4. Listar Médicos");
             System.out.println("5. Atualizar Cadastro de Paciente");
             System.out.println("6. Atualizar Cadastro de Médico");
+            System.out.println("7. Agendar Consulta");
+            System.out.println("8. Desagendar Consulta");
             System.out.println("0. Sair");
             System.out.print("Escolha: ");
             
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar buffer
+            scanner.nextLine(); // limpar buffer
             
             switch (opcao) {
                 case 1 -> cadastroPaciente.cadastrar();
@@ -33,7 +37,10 @@ public class Principal {
                 case 4 -> cadastroMedico.listar();
                 case 5 -> cadastroPaciente.atualizar();
                 case 6 -> cadastroMedico.atualizar();
+                case 7 -> Agendamento.agendarConsultaPrompt(cadastroPaciente, cadastroMedico);
+                case 8 -> Agendamento.desagendarConsultaPrompt(cadastroPaciente, cadastroMedico);
             }
         } while (opcao != 0);
     }
+    
 }

@@ -36,7 +36,7 @@ public class CadastroPaciente extends Cadastro<Pessoas> {
     public boolean atualizarEntidade(String cpf, Pessoas novosDados) {
         Pessoas pacienteExistente = buscarPorCPF(cpf);
         if (pacienteExistente != null) {
-            // Atualiza apenas campos permitidos (ex: nome e data de nascimento)
+            // atualiza apenas campos permitidos (ex: nome e data de nascimento)
             pacienteExistente.setNome(novosDados.getNome());
             pacienteExistente.setDataNascimento(novosDados.getDataNascimento());
             return true;

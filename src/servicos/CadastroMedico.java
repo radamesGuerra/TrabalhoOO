@@ -28,7 +28,7 @@ public class CadastroMedico extends Cadastro<Medico> {
                 .findFirst()
                 .orElse(null);
     }
-
+    
     public boolean remover(String cpf) {
         Medico medico = buscarPorCPF(cpf);
         return medicos.remove(medico);
@@ -37,7 +37,7 @@ public class CadastroMedico extends Cadastro<Medico> {
     public boolean atualizarEntidade(String cpf, Medico novosDados) {
         Medico medicoExistente = buscarPorCPF(cpf);
         if (medicoExistente != null) {
-            // Atualiza campos permitidos (ex: nome, CRM e especialidade)
+            // atualiza campos permitidos (ex: nome, CRM e especialidade)
             medicoExistente.setNome(novosDados.getNome());
             medicoExistente.setCRM(novosDados.getCRM());
             medicoExistente.setEspecialidade(novosDados.getEspecialidade());

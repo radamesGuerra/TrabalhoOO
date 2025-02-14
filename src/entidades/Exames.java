@@ -15,6 +15,7 @@ public class Exames {
         this.dataPrescricao = dataPrescricao;
         this.custo = custo;
         this.resultado = "PENDENTE";
+        this.especialidade = especialidade;
     }
 
     public void registrarResultado(String resultado, LocalDate dataRealizacao) {
@@ -46,5 +47,9 @@ public class Exames {
 	
 	public double getCusto() {
 		return custo;
+	}
+	
+	public String getEspecialidade() {
+		return especialidade;
 	}
 }

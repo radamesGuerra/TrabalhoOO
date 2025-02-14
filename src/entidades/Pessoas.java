@@ -18,31 +18,37 @@ public class Pessoas {
 		this.consultas = new ArrayList<>();
 	}
 	
+    // Getters e Setters
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public String getCPF() {
 		return cpf;
 	}
+	
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public void setCPF(String cpf) {
-		this.cpf = cpf;
-	}
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}	
+	
     public List<Consulta> getConsultas() { 
     	return consultas; 
     }
     
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setCPF(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
     public void adicionarConsulta(Consulta consulta) {
         this.consultas.add(consulta);
     }
-
-	
 }

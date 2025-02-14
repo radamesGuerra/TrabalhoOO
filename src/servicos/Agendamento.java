@@ -1,5 +1,6 @@
 package servicos;
 
+import entidades.Consulta;
 import entidades.Exames;
 import entidades.Medico;
 import entidades.Pessoas;
@@ -19,13 +20,13 @@ public class Agendamento {
         }
         
         //verificar as especialidasdes disponíveis
-        if (!medico.getEspecialidade().equals("Cardiologia")) { 
+        if (!medico.getEspecialidade().equalsIgnoreCase(especialidadeRequerida)) { 
             throw new EspecialidadeInvalidaException("O médico não tem a especialidade requerida!");
         }
 
         // Verificação de horário
-        for (Consulta c : medico.getHistoricoConsultas()) {
-            if (c.getDataHora().equals(dataHora)) {
+        for (Consulta c : medico.getConsultas()) {
+            if (c.getData().equals(dataHora)) {
                 throw new HorarioIndisponivelException("O horário já está ocupado!");
             }
         }

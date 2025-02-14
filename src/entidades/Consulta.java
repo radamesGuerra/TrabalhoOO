@@ -14,8 +14,9 @@ public class Consulta {
     private Pessoas paciente;
     private List<Exames> exames;
     private List<String> medicamentos;
+    private List<Pagamento> pagamentos;
     private double valor;
-
+    
     public Consulta(LocalDate data, LocalTime horarioInicio, int duracao, String status, Medico medico, Pessoas paciente, double valor) {
         this.data = data;
         this.horarioInicio = horarioInicio;
@@ -25,9 +26,11 @@ public class Consulta {
         this.paciente = paciente;
         this.exames = new ArrayList<>();
         this.medicamentos = new ArrayList<>();
+        this.pagamentos = new ArrayList<>();
         this.valor = valor;
     }
-
+    
+    // Getters e Setters
     public LocalDate getData() { 
     	return data; 
     }
@@ -83,7 +86,7 @@ public class Consulta {
     public List<String> getMedicamentos() { 
     	return medicamentos; 
     }
-    
+  
     public double getValor() { 
     	return valor; 
     }
@@ -98,5 +101,9 @@ public class Consulta {
 
     public void adicionarMedicamento(String medicamento) {
         this.medicamentos.add(medicamento);
+    }  
+    
+    public void adicionarPagamento(Pagamento pagamento) {
+        this.pagamentos.add(pagamento);
     }
 }

@@ -15,7 +15,6 @@ public class Consulta {
     private Medico medico;
     private Pessoas paciente;
     private String especialidadeRequerida;
-    private List<Medicamento> medicamentos;
     private List<Pagamento> pagamentos;
     private double valor;
     
@@ -28,7 +27,6 @@ public class Consulta {
         this.status = "AGENDADA";
         this.medico = medico;
         this.paciente = paciente;
-        this.medicamentos = new ArrayList<>();
         this.pagamentos = new ArrayList<>();
         this.valor = valor;
         this.especialidadeRequerida = especialidadeRequerida;
@@ -44,14 +42,6 @@ public class Consulta {
 
     public void cancelar() {
         this.status = "CANCELADA";
-    }
-
-    public void adicionarMedicamento(Medicamento medicamento) {
-        this.medicamentos.add(medicamento);
-    }
-
-    public List<Medicamento> getMedicamentos() { 
-        return medicamentos; 
     }
 
     public List<Pagamento> getPagamentos() {
@@ -112,6 +102,13 @@ public class Consulta {
     
     public void setValor(double valor) { 
         this.valor = valor; 
+    }
+    
+    public double getTotalPago() {
+        return pagamentos.stream()
+            .filter(p -> p.getStatus().equals("PAGO"))
+            .mapToDouble(Pagamento::getValor)
+            .sum();
     }
 
     public String getEspecialidadeRequerida() {

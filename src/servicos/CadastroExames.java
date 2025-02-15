@@ -40,15 +40,4 @@ public class CadastroExames {
         return exames.removeIf(e -> e.getId().equals(id));
     }
     
-    public void cadastrarExame() {
-        System.out.println("\n--- Novo Exame ---");
-        String tipo = Principal.lerString("Tipo do exame: ");
-        double custo = Principal.lerDouble("Custo: ");
-        LocalDate dataExame = Principal.lerData("Data do Exame (AAAA-MM-DD): ");
-        
-        Exames exame = new Exames(tipo, dataExame, custo);
-        cadastrar(exame);
-        System.out.println("Exame cadastrado com sucesso!");
-    }
-    
 }

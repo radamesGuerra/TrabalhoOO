@@ -4,10 +4,8 @@ import entidades.*;
 import excecoes.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Scanner;
 
 public class Agendamento {
-    private static Scanner scanner = new Scanner(System.in);
     
     public static String agendarConsulta(Medico medico, Pessoas paciente, 
                                       LocalDate data, LocalTime horarioInicio, 
@@ -71,28 +69,24 @@ public class Agendamento {
     }
     
     protected static void agendarConsultaPrompt(Cadastro<Pessoas> cadastroPaciente, Cadastro<Medico> cadastroMedico) {
-        System.out.print("CPF do paciente: ");
-        String cpfPaciente = scanner.nextLine();
+        String cpfPaciente = Principal.lerString("CPF do paciente: ");
         Pessoas paciente = cadastroPaciente.buscarPorCPF(cpfPaciente);
 
-        System.out.print("CPF do médico: ");
-        String cpfMedico = scanner.nextLine();
+        String cpfMedico = Principal.lerString("CPF do médico: ");
         Medico medico = cadastroMedico.buscarPorCPF(cpfMedico);
 
-        System.out.print("Data da consulta (AAAA-MM-DD): ");
-        LocalDate data = LocalDate.parse(scanner.nextLine());
+        LocalDate data = Principal.lerData("Data da consulta (AAAA-MM-DD): ");
 
         System.out.print("Horário de Início da consulta (HH:MM): ");
-        LocalTime horario = LocalTime.parse(scanner.nextLine());
+        LocalTime horario = LocalTime.parse(Principal.scanner.nextLine());
 
         System.out.print("Duração da consulta (minutos): ");
-        int duracao = scanner.nextInt();
+        int duracao = Principal.lerInteiro("Duração da consulta (minutos): ");
 
-        System.out.print("Valor: ");
-        double valor = scanner.nextDouble();
+        double valor = Principal.lerDouble("Valor: ");
+        Principal.lerString(null); // Consumir a quebra de linha
 
-        System.out.print("Especialidade requerida: ");
-        String especialidadeRequerida = scanner.nextLine();
+        String especialidadeRequerida = Principal.lerString("Especialidade requerida: ");
         
         try {
         	String idConsulta = agendarConsulta(medico, paciente, data, horario, duracao, valor, especialidadeRequerida);
@@ -104,15 +98,12 @@ public class Agendamento {
     }
 
     protected static void desagendarConsultaPrompt(Cadastro<Pessoas> cadastroPaciente, Cadastro<Medico> cadastroMedico) {
-        System.out.print("ID da consulta: ");
-        String idConsulta = scanner.nextLine();
+        String idConsulta = Principal.lerString("ID da consulta: ");
 
-        System.out.print("CPF do paciente: ");
-        String cpfPaciente = scanner.nextLine();
+        String cpfPaciente = Principal.lerString("CPF do paciente: ");
         Pessoas paciente = cadastroPaciente.buscarPorCPF(cpfPaciente);
 
-        System.out.print("CPF do médico: ");
-        String cpfMedico = scanner.nextLine();
+        String cpfMedico = Principal.lerString("CPF do médico: ");
         Medico medico = cadastroMedico.buscarPorCPF(cpfMedico);
 
         desagendarConsulta(idConsulta, medico, paciente);

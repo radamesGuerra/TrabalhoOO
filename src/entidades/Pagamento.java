@@ -10,7 +10,7 @@ public class Pagamento {
     public Pagamento(double valor, LocalDate data, String status) {
         this.valor = valor;
         this.data = data;
-        this.status = "PENDENTE"; // Status padrão
+        this.status = status;
     }
 
     // Getters e Setters

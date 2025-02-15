@@ -80,7 +80,6 @@ public class Agendamento {
         System.out.print("Horário de Início da consulta (HH:MM): ");
         LocalTime horario = LocalTime.parse(Principal.scanner.nextLine());
 
-        System.out.print("Duração da consulta (minutos): ");
         int duracao = Principal.lerInteiro("Duração da consulta (minutos): ");
 
         double valor = Principal.lerDouble("Valor: ");

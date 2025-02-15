@@ -20,7 +20,7 @@ public class Principal {
         int opcaoPrincipal;
         do {
             exibirMenuPrincipal();
-            opcaoPrincipal = lerInteiro("");
+            opcaoPrincipal = lerInteiro("Escolha: ");
             
             switch (opcaoPrincipal) {
                 case 1 -> gerenciarPacientes();

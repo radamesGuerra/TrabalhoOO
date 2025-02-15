@@ -84,7 +84,6 @@ public class Agendamento {
         int duracao = Principal.lerInteiro("Duração da consulta (minutos): ");
 
         double valor = Principal.lerDouble("Valor: ");
-        Principal.lerString(null); // Consumir a quebra de linha
 
         String especialidadeRequerida = Principal.lerString("Especialidade requerida: ");
         

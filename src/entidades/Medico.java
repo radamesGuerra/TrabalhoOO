@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class Medico extends Pessoas{
 
-	protected String crm;
-	protected String especialidade;
+	private String crm;
+	private String especialidade;
 	
 	public Medico(String nome, String cpf, LocalDate dataNascimento, String crm, String especialidade) {
 		super(nome, cpf, dataNascimento);

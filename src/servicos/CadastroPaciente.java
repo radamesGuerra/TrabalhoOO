@@ -5,11 +5,9 @@ import entidades.Pessoas;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CadastroPaciente extends Cadastro<Pessoas> {
     private List<Pessoas> pacientes = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
     
     public void cadastrarEntidade(Pessoas paciente) {
         if (buscarPorCPF(paciente.getCPF()) == null) {
@@ -28,7 +26,7 @@ public class CadastroPaciente extends Cadastro<Pessoas> {
                 .orElse(null);
     }
 
-    public boolean remover(String cpf) {
+    public boolean removerEntidade(String cpf) {
         Pessoas paciente = buscarPorCPF(cpf);
         return pacientes.remove(paciente);
     }
@@ -45,15 +43,12 @@ public class CadastroPaciente extends Cadastro<Pessoas> {
     }
 
     public void cadastrar() {
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
+        String nome = Principal.lerString("Nome: ");
         
-        System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
+        String cpf = Principal.lerString("CPF: ");
         
         if (buscarPorCPF(cpf) == null) {
-        	System.out.print("Data Nascimento (AAAA-MM-DD): ");
-            LocalDate dataNasc = LocalDate.parse(scanner.nextLine());
+            LocalDate dataNasc = Principal.lerData("Data Nascimento (AAAA-MM-DD): ");
              
             Pessoas paciente = new Pessoas(nome, cpf, dataNasc);
             cadastrarEntidade(paciente);
@@ -70,13 +65,20 @@ public class CadastroPaciente extends Cadastro<Pessoas> {
     public void listar() {
         System.out.println("\n=== Pacientes Cadastrados ===");
         listarEntidade().forEach(p -> 
-            System.out.println(p.getNome() + " - CPF: " + p.getCPF())
+        	System.out.println("CPF: " + p.getCPF() + " | Nome: " + p.getNome())
         );
     }
     
+    public void remover() {
+        String cpf = Principal.lerString("CPF do paciente: ");
+        boolean removido = removerEntidade(cpf);
+        
+        System.out.println(removido ? "Paciente removido!" : "Paciente não encontrado!");
+    }
+
+    
     public void atualizar() {
-        System.out.print("Digite o CPF do paciente: ");
-        String cpf = scanner.nextLine();
+        String cpf = Principal.lerString("Digite o CPF do paciente: ");
         
         Pessoas paciente = buscarPorCPF(cpf);
         if (paciente == null) {
@@ -84,11 +86,9 @@ public class CadastroPaciente extends Cadastro<Pessoas> {
             return;
         }
 
-        System.out.print("Novo nome: ");
-        String novoNome = scanner.nextLine();
+        String novoNome = Principal.lerString("Novo nome: ");
         
-        System.out.print("Nova data de nascimento (AAAA-MM-DD): ");
-        LocalDate novaDataNasc = LocalDate.parse(scanner.nextLine());
+        LocalDate novaDataNasc = Principal.lerData("Nova data de nascimento (AAAA-MM-DD): ");
 
         Pessoas novosDados = new Pessoas(novoNome, cpf, novaDataNasc); // CPF não muda
         boolean sucesso = atualizarEntidade(cpf, novosDados);

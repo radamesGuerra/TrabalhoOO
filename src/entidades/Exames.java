@@ -3,53 +3,62 @@ package entidades;
 import java.time.LocalDate;
 
 public class Exames {
+    private String id;
     private String tipo;
     private LocalDate dataPrescricao;
     private LocalDate dataRealizacao;
     private String resultado;
-    private String especialidade;
     private double custo;
 
-    public Exames(String tipo, LocalDate dataPrescricao, double custo, String especialidade) {
-    	this.tipo = tipo;
+    public Exames(String tipo, LocalDate dataPrescricao, double custo) {
+        this.tipo = tipo;
         this.dataPrescricao = dataPrescricao;
         this.custo = custo;
-        this.resultado = "PENDENTE";
-        this.especialidade = especialidade;
+        this.resultado = "Pendente";
     }
 
-    public void registrarResultado(String resultado, LocalDate dataRealizacao) {
-    	this.resultado = resultado;
-        this.dataRealizacao = dataRealizacao;
+    // Getters e Setters
+    public String getId() { 
+    	return id; 
     }
     
-    // Getters e Setters
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		
-	}
-
-	public LocalDate getDataPrescricao() {
-		return dataPrescricao;
-	}
-
-	public LocalDate getDataRealizacao() {
-		return dataRealizacao;
-	}
-
-	public String getResultado() {
-		return resultado;
-	}
-	
-	public double getCusto() {
-		return custo;
-	}
-	
-	public String getEspecialidade() {
-		return especialidade;
-	}
+    public String getTipo() { 
+    	return tipo; 
+    }
+    
+    public void setTipo(String tipo) { 
+    	this.tipo = tipo; 
+    }
+    
+    public LocalDate getDataPrescricao() { 
+    	return dataPrescricao; 
+    }
+    
+    public void setDataPrescricao(LocalDate dataPrescricao) { 
+    	this.dataPrescricao = dataPrescricao; 
+    }
+    
+    public LocalDate getDataRealizacao() { 
+    	return dataRealizacao; 
+    }
+    
+    public void setDataRealizacao(LocalDate dataRealizacao) { 
+    	this.dataRealizacao = dataRealizacao; 
+    }
+    
+    public String getResultado() { 
+    	return resultado; 
+    }
+    
+    public void setResultado(String resultado) { 
+    	this.resultado = resultado; 
+    }
+    
+    public double getCusto() { 
+    	return custo; 
+    }
+    
+    public void setCusto(double custo) { 
+    	this.custo = custo; 
+    }
 }

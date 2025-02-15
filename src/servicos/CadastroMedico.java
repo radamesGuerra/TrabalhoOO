@@ -1,16 +1,13 @@
 package servicos;
 
 import entidades.Medico;
-import entidades.Pessoas;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CadastroMedico extends Cadastro<Medico> {
     private List<Medico> medicos = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
     
     public void cadastrarEntidade(Medico medico) {
         if (buscarPorCPF(medico.getCPF()) == null) {
@@ -29,7 +26,7 @@ public class CadastroMedico extends Cadastro<Medico> {
                 .orElse(null);
     }
     
-    public boolean remover(String cpf) {
+    public boolean removerEntidade(String cpf) {
         Medico medico = buscarPorCPF(cpf);
         return medicos.remove(medico);
     }
@@ -47,21 +44,16 @@ public class CadastroMedico extends Cadastro<Medico> {
     }
     
     public void cadastrar() {
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
+        String nome = Principal.lerString("Nome: ");
         
-        System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
+        String cpf = Principal.lerString("CPF: ");
         
         if (buscarPorCPF(cpf) == null) {
-            System.out.print("CRM: ");
-            String crm = scanner.nextLine();
+            String crm = Principal.lerString("CRM: ");
             
-            System.out.print("Especialidade: ");
-            String especialidade = scanner.nextLine();
-            
-            System.out.print("Data Nascimento (AAAA-MM-DD): ");
-            LocalDate dataNasc = LocalDate.parse(scanner.nextLine());
+            String especialidade = Principal.lerString("Especialidade: ");
+
+            LocalDate dataNasc = Principal.lerData("Data Nascimento (AAAA-MM-DD): ");
             
             Medico medico = new Medico(nome, cpf, dataNasc, crm, especialidade);
             cadastrarEntidade(medico);
@@ -76,13 +68,19 @@ public class CadastroMedico extends Cadastro<Medico> {
     public void listar() {
         System.out.println("\n=== Médicos Cadastrados ===");
         listarEntidade().forEach(m -> 
-            System.out.println(m.getNome() + " - CPF: " + m.getCPF())
+        	System.out.println("CRM: " + m.getCRM() + " | Nome: " + m.getNome() + " | Especialidade: " + m.getEspecialidade())
         );
     }
     
+    public void remover() {
+        String cpf = Principal.lerString("CPF do médico: ");
+        boolean removido = removerEntidade(cpf);
+        
+        System.out.println(removido ? "Médico removido!" : "Médico não encontrado!");
+    }
+    
     public void atualizar() {
-        System.out.print("Digite o CPF do médico: ");
-        String cpf = scanner.nextLine();
+        String cpf = Principal.lerString("Digite o CPF do médico: ");
         
         Medico medico = buscarPorCPF(cpf);
         if (medico == null) {
@@ -90,14 +88,11 @@ public class CadastroMedico extends Cadastro<Medico> {
             return;
         }
 
-        System.out.print("Novo nome: ");
-        String novoNome = scanner.nextLine();
+        String novoNome = Principal.lerString("Novo nome: ");
         
-        System.out.print("Novo CRM: ");
-        String novoCRM = scanner.nextLine();
+        String novoCRM = Principal.lerString("Novo CRM: ");
         
-        System.out.print("Nova especialidade: ");
-        String novaEspecialidade = scanner.nextLine();
+        String novaEspecialidade = Principal.lerString("Nova especialidade: ");
 
         Medico novosDados = new Medico(novoNome, cpf, medico.getDataNascimento(), novoCRM, novaEspecialidade);
         boolean sucesso = atualizarEntidade(cpf, novosDados);

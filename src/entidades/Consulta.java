@@ -15,7 +15,6 @@ public class Consulta {
     private Medico medico;
     private Pessoas paciente;
     private String especialidadeRequerida;
-    private List<Exames> exames;
     private List<Medicamento> medicamentos;
     private List<Pagamento> pagamentos;
     private double valor;
@@ -29,7 +28,6 @@ public class Consulta {
         this.status = "AGENDADA";
         this.medico = medico;
         this.paciente = paciente;
-        this.exames = new ArrayList<>();
         this.medicamentos = new ArrayList<>();
         this.pagamentos = new ArrayList<>();
         this.valor = valor;
@@ -108,10 +106,6 @@ public class Consulta {
         this.paciente = paciente; 
     }
     
-    public List<Exames> getExames() { 
-        return exames; 
-    }
-    
     public double getValor() { 
         return valor; 
     }
@@ -124,10 +118,6 @@ public class Consulta {
         return especialidadeRequerida;
     }
 
-    public void adicionarExame(Exames exame) {
-        this.exames.add(exame);
-    }
-    
     public void adicionarPagamento(Pagamento pagamento) {
         this.pagamentos.add(pagamento);
     }

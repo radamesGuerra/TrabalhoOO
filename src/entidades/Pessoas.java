@@ -6,10 +6,10 @@ import java.util.List;
 
 
 public class Pessoas {
-	protected String nome;
-	protected String cpf;
-	protected LocalDate dataNascimento;
-	protected List<Consulta> consultas = new ArrayList<>();
+	private String nome;
+	private String cpf;
+	private LocalDate dataNascimento;
+	private List<Consulta> consultas = new ArrayList<>();
 	public Pessoas (String nome, String cpf, LocalDate dataNascimento) {
 		this.nome = nome;
 		this.cpf = cpf;

@@ -1,6 +1,7 @@
 package entidades;
 
 public class Medicamento {
+    private String id;
     private String nome;
     private String dosagem;
     private String instrucoes;
@@ -12,15 +13,31 @@ public class Medicamento {
     }
 
     // Getters e Setters
+    public String getId() { 
+    	return id; 
+    }
+    
     public String getNome() { 
-        return nome; 
+    	return nome; 
     }
-
+    
+    public void setNome(String nome) { 
+    	this.nome = nome; 
+    }
+    
     public String getDosagem() { 
-        return dosagem; 
+    	return dosagem; 
     }
-
-	public String getInstrucoes() {
-		return instrucoes;
-	}
+    
+    public void setDosagem(String dosagem) { 
+    	this.dosagem = dosagem; 
+    }
+    
+    public String getInstrucoes() { 
+    	return instrucoes; 
+    }
+    
+    public void setInstrucoes(String instrucoes) { 
+    	this.instrucoes = instrucoes; 
+    }
 }

@@ -7,7 +7,7 @@ public class Pagamento {
     private LocalDate data;
     private String status; // Ex: PENDENTE, PAGO
 
-    public Pagamento(double valor, LocalDate data) {
+    public Pagamento(double valor, LocalDate data, String status) {
         this.valor = valor;
         this.data = data;
         this.status = "PENDENTE"; // Status padrão

@@ -90,10 +90,10 @@ public class Agendamento {
 
         System.out.print("Valor: ");
         double valor = scanner.nextDouble();
-        
+
         System.out.print("Especialidade requerida: ");
         String especialidadeRequerida = scanner.nextLine();
-
+        
         try {
         	String idConsulta = agendarConsulta(medico, paciente, data, horario, duracao, valor, especialidadeRequerida);
             System.out.println("Consulta agendada!");
@@ -117,6 +117,20 @@ public class Agendamento {
 
         desagendarConsulta(idConsulta, medico, paciente);
         System.out.println("Consulta desagendada!");
+    }
+    
+    protected static void listarConsultas(Cadastro<Medico> cadastroMedico) {
+        System.out.println("\n=== Consultas Marcadas ===");
+        cadastroMedico.listarEntidade().forEach(medico -> 
+            medico.getConsultas().forEach(consulta -> 
+                System.out.println(
+                    "ID: " + consulta.getId() + 
+                    " | Data: " + consulta.getData() + 
+                    " | Médico: " + medico.getNome() + 
+                    " | Paciente: " + consulta.getPaciente().getNome()
+                )
+            )
+        );
     }
     
 }
